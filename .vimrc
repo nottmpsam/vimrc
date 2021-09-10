@@ -1,4 +1,3 @@
-
 set tabstop=4
 set expandtab
 set softtabstop=4
@@ -65,7 +64,7 @@ map <C-n> :NERDTreeToggle<CR>
 "clrschm
 let g:airline_theme='badwolf'
 "set background=light
-colorscheme OceanicNext
+colorscheme blue
 set t_Co=256
 "Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
 "If you're using tmux version 2.2 or later, you can remove the outermost $TMUX check and use tmux's 24-bit color support
@@ -267,4 +266,10 @@ let g:EasyMotion_smartcase = 1
 " JK motions: Line motions
 map <Leader>j <Plug>(easymotion-j)
 map <Leader>k <Plug>(easymotion-k)
-"""""
+""""
+set keymap=russian-jcukenwin
+set iminsert=0 " Чтобы при старте ввод был на английском, а не русском (start > i)
+nnoremap <silent> <C-^> :let &iminsert = (&iminsert == 0 ? 1 : 0)<CR>
+" Дополнительно можно добавить:
+highlight lCursor guifg=NONE guibg=Cyan " Смена цвета курсор
+""""
