@@ -4,8 +4,8 @@ set softtabstop=4
 set tabstop=4
 set shiftwidth=4
 set shiftround
-set scrolloff=8
-set sidescrolloff=5
+set scrolloff=4
+set sidescrolloff=4
 set wrap
 set cin
 set showmatch
@@ -23,11 +23,15 @@ set backspace=indent,eol,start
 "empty line
 map <Enter> o<ESC>
 map <S-Enter> O<ESC>
+
 "gtk
 nnoremap <C-y> "+y 
 vnoremap <C-y> "+y
 nnoremap <C-p> "+gP
 vnoremap <C-p> "+gP
+
+hi CursorLine   cterm=NONE ctermbg=darkred ctermfg=white
+nnoremap H :set cursorline! <CR>
 
 set tags=./tags;/
 map <C-j> <C-W>j
@@ -83,7 +87,7 @@ map <C-n> :NERDTreeToggle<CR>
 """""""""""""""""""""""""""""""""""""""""""'
 "clrschm
 let g:airline_theme='badwolf'
-set background=light
+set background=dark
 colorscheme PaperColor
 set t_Co=256
 "Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
