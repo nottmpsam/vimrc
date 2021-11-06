@@ -1,39 +1,56 @@
-set tabstop=4
+set autoindent
 set expandtab
 set softtabstop=4
+set tabstop=4
 set shiftwidth=4
-set smarttab
-set eb
+set shiftround
+set scrolloff=8
+set sidescrolloff=5
 set wrap
-set ai
 set cin
 set showmatch
 set hlsearch
+set smarttab
 set incsearch
 set ignorecase
-
+set smartcase
 syntax on
-set mouse=a
 set number
-
+set confirm
+set noswapfile
+set backspace=indent,eol,start
 """""""""""""""""""""'
+"empty line
+map <Enter> o<ESC>
+map <S-Enter> O<ESC>
+"gtk
+nnoremap <C-y> "+y 
+vnoremap <C-y> "+y
+nnoremap <C-p> "+gP
+vnoremap <C-p> "+gP
+
+set tags=./tags;/
 map <C-j> <C-W>j
 map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
-set tags=./tags;/
-"""""""""""""
-set noshowmode
-"""optm""""
-set nocursorline
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
+""""""""""""""
+set showmode
+set showcmd 
 set lazyredraw
 set ttyfast
 set synmaxcol=128
 syntax sync minlines=256
-set noshowcmd 
 set regexpengine=1 
 """"""""""""
-
+inoremap jk <esc>
+nnoremap ,<space> : nohlsearch<CR>
+" If the current buffer has never been saved, it will have no name,
+" call the file browser to save it, otherwise just save it.
+nnoremap <silent> <C-S> :if expand("%") == ""<CR>browse confirm w<CR>else<CR>confirm w<CR>endif<CR>
+""""""
 " Specify a directory for plugins
 " - For Neovim: stdpath('data') . '/plugged'
 " - Avoid using standard Vim directory names like 'plugin'
@@ -52,7 +69,10 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'vim-airline/vim-airline-themes'
 "colorschemes
 Plug  'joshdick/onedark.vim'
+
 Plug 'rafi/awesome-vim-colorschemes'
+
+Plug 'lifepillar/pgsql.vim'
 
 Plug 'vim-airline/vim-airline'
 " Initialize plugin system
@@ -63,8 +83,8 @@ map <C-n> :NERDTreeToggle<CR>
 """""""""""""""""""""""""""""""""""""""""""'
 "clrschm
 let g:airline_theme='badwolf'
-"set background=light
-colorscheme blue
+set background=light
+colorscheme PaperColor
 set t_Co=256
 "Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
 "If you're using tmux version 2.2 or later, you can remove the outermost $TMUX check and use tmux's 24-bit color support
@@ -212,8 +232,8 @@ endif
 
 " Use CTRL-S for selections ranges.
 " Requires 'textDocument/selectionRange' support of language server.
-nmap <silent> <C-s> <Plug>(coc-range-select)
-xmap <silent> <C-s> <Plug>(coc-range-select)
+"nmap <silent> <C-s> <Plug>(coc-range-select)
+"xmap <silent> <C-s> <Plug>(coc-range-select)
 
 " Add `:Format` command to format current buffer.
 command! -nargs=0 Format :call CocAction('format')
